@@ -15,6 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
+	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
@@ -195,7 +196,7 @@ func (ddr *productDefectdojoResource) createApiCall(ctx context.Context, client 
 	return apiResp.StatusCode(), apiResp.Body, err
 }
 
-func (ddr *productDefectdojoResource) readApiCall(ctx context.Context, client *dd.ClientWithResponses, idNumber int) (int, []byte, error) {
+func (ddr *productDefectdojoResource) readApiCall(state *tfsdk.State, ctx context.Context, client *dd.ClientWithResponses, idNumber int) (int, []byte, error) {
 	tflog.Info(ctx, "readApiCall")
 	apiResp, err := client.ProductsRetrieveWithResponse(ctx, idNumber, &dd.ProductsRetrieveParams{})
 	tflog.Info(ctx, fmt.Sprintf("response %s: %s", apiResp.Status(), apiResp.Body))

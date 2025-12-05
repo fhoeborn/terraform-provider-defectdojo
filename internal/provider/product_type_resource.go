@@ -9,6 +9,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
@@ -79,7 +80,7 @@ func (ddr *productTypeDefectdojoResource) createApiCall(ctx context.Context, cli
 	return apiResp.StatusCode(), apiResp.Body, err
 }
 
-func (ddr *productTypeDefectdojoResource) readApiCall(ctx context.Context, client *dd.ClientWithResponses, idNumber int) (int, []byte, error) {
+func (ddr *productTypeDefectdojoResource) readApiCall(state *tfsdk.State, ctx context.Context, client *dd.ClientWithResponses, idNumber int) (int, []byte, error) {
 	apiResp, err := client.ProductTypesRetrieveWithResponse(ctx, idNumber, &dd.ProductTypesRetrieveParams{})
 	if apiResp.JSON200 != nil {
 		ddr.ProductType = *apiResp.JSON200

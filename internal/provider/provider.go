@@ -166,8 +166,13 @@ func (p *DefectDojoProvider) Metadata(ctx context.Context, req provider.Metadata
 func (p *DefectDojoProvider) Resources(ctx context.Context) []func() resource.Resource {
 	return []func() resource.Resource{
 		NewProductResource,
+		NewGroupProductResource,
+		NewGroupResource,
+		NewGroupMemberResource,
+		NewUserResource,
 		NewProductTypeResource,
 		NewJiraProductConfigurationResource,
+		NewProductTypeMemberResource,
 	}
 }
 
@@ -175,6 +180,8 @@ func (p *DefectDojoProvider) DataSources(ctx context.Context) []func() datasourc
 	return []func() datasource.DataSource{
 		NewProductDataSource,
 		NewProductTypeDataSource,
+		NewUserDataSource,
+		NewGroupDataSource,
 	}
 
 }

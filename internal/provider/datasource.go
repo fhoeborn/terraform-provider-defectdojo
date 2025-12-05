@@ -60,7 +60,7 @@ func (r terraformDatasource) Read(ctx context.Context, req datasource.ReadReques
 	ddResource := data.defectdojoResource()
 	populateDefectdojoResource(ctx, &diags, data, &ddResource)
 
-	statusCode, body, err := ddResource.readApiCall(ctx, r.client, idNumber)
+	statusCode, body, err := ddResource.readApiCall(nil, ctx, r.client, idNumber)
 	if err != nil {
 		resp.Diagnostics.AddError(
 			"Error Retrieving Resource",

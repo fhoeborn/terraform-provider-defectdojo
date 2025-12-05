@@ -11,6 +11,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
+	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
@@ -22,7 +23,7 @@ type terraformResourceData interface {
 
 type defectdojoResource interface {
 	createApiCall(context.Context, *dd.ClientWithResponses) (int, []byte, error)
-	readApiCall(context.Context, *dd.ClientWithResponses, int) (int, []byte, error)
+	readApiCall(*tfsdk.State, context.Context, *dd.ClientWithResponses, int) (int, []byte, error)
 	updateApiCall(context.Context, *dd.ClientWithResponses, int) (int, []byte, error)
 	deleteApiCall(context.Context, *dd.ClientWithResponses, int) (int, []byte, error)
 }
@@ -142,7 +143,7 @@ func (r *terraformResource) Read(ctx context.Context, req resource.ReadRequest, 
 	ddResource := data.defectdojoResource()
 	populateDefectdojoResource(ctx, &diags, data, &ddResource)
 
-	statusCode, body, err := ddResource.readApiCall(ctx, r.client, idNumber)
+	statusCode, body, err := ddResource.readApiCall(&req.State, ctx, r.client, idNumber)
 	if err != nil {
 		resp.Diagnostics.AddError(
 			"Error Retrieving Resource",
