@@ -24,5 +24,3 @@ DefectDojo Group Membership
 ### Read-Only
 
 - `id` (String) Identifier
-
-

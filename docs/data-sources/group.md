@@ -33,5 +33,3 @@ Read-Only:
 
 - `description` (String) The description of the group
 - `name` (String) The name of the group
-
-

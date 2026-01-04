@@ -25,5 +25,3 @@ Data source for Defect Dojo Product Type. You can specify either the `id` or the
 - `critical_product` (Boolean) Is this a critical Product Type
 - `description` (String) The description of the Product Type
 - `key_product` (Boolean) Is this a key Product Type
-
-

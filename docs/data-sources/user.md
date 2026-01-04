@@ -35,5 +35,3 @@ Read-Only:
 - `email` (String) The email of the User
 - `id` (String) Identifier
 - `username` (String) The username of the User
-
-

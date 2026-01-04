@@ -24,5 +24,3 @@ DefectDojo Group Access to Product
 ### Read-Only
 
 - `id` (String) Identifier
-
-

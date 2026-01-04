@@ -31,5 +31,3 @@ A Jira Product Configuration is the connection between a Product and a Jira Inst
 ### Read-Only
 
 - `id` (String) Identifier
-
-

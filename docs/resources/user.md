@@ -29,5 +29,3 @@ DefectDojo User
 ### Read-Only
 
 - `id` (String) Identifier
-
-

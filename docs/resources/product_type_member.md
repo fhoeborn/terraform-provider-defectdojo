@@ -24,5 +24,3 @@ DefectDojo Product Type Membership
 ### Read-Only
 
 - `id` (String) Identifier
-
-
