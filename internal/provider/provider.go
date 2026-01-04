@@ -179,6 +179,7 @@ func (p *DefectDojoProvider) Resources(ctx context.Context) []func() resource.Re
 func (p *DefectDojoProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
 	return []func() datasource.DataSource{
 		NewProductDataSource,
+		NewProductsDataSource,
 		NewProductTypeDataSource,
 		NewUserDataSource,
 		NewGroupDataSource,
